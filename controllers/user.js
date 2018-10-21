@@ -1,4 +1,3 @@
-const mongoose = require('mongoose')
 const bcrypt = require('bcrypt')
 const { User, validateUser } = require('../models/user')
 
