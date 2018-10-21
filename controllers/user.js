@@ -37,3 +37,27 @@ exports.signup = async (req, res) => {
     res.status(500).send('an error occurred' + error)
   }
 }
+
+// Login User
+exports.login = async (req, res, next) => {
+  const id = req.params.id
+  const user = await User.findById(id).select('-password -__v')
+  if (!user) return res.status(400).json({
+    message: 'Resource not found'
+  })
+
+  const token = user.generateToken()
+
+  res.json({
+    token,
+    user
+  })
+}
+
+// Get all users
+exports.get_all_users = async (req, res) => {
+  const users = await User.find().select('username email')
+
+  if (!users) return res.status(500).send(error.message)
+  res.send(users)
+}
