@@ -1,0 +1,31 @@
+{
+  "name": "backend-template",
+  "version": "1.0.0",
+  "description": "A template for generating express / mongodb apps",
+  "main": "index.js",
+  "scripts": {
+    "server": "nodemon server.js"
+  },
+  "keywords": [
+    "mongodb",
+    "express",
+    "node"
+  ],
+  "author": "Fayvor George",
+  "license": "MIT",
+  "dependencies": {
+    "bcrypt": "^3.0.0",
+    "bluebird": "^3.5.2",
+    "body-parser": "^1.18.3",
+    "dotenv": "^6.1.0",
+    "express": "^4.16.3",
+    "joi": "^13.6.0",
+    "jsonwebtoken": "^8.3.0",
+    "mongoose": "^5.2.13",
+    "morgan": "^1.9.0",
+    "multer": "^1.4.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.4"
+  }
+}
