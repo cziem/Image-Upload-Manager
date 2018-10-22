@@ -42,29 +42,18 @@ exports.add_images = async (req, res) => {
   let updatedFile
 
   // Add more pictures to the photos array
-  for (let i = 0; i <= filepath.length; i++) {
-    updatedFile = await File.findOneAndUpdate(id, {
-      $push: {
-        photos: filepath[i]
-      }
-    })
+  try {
+    for (let i = 0; i <= filepath.length; i++) {
+      updatedFile = await File.findOneAndUpdate(id, {
+        $push: {
+          photos: filepath[i]
+        }
+      })
+    }
+  
+    res.status(200).json(updatedFile)
+    
+  } catch (error) {
+    res.status(400).json('could not add images')
   }
-
-
-
-  // let updatedFile = await req.files.forEach((file) => {
-  //   console.log(file)
-  //   File.findOneAndUpdate(id, {
-  //     $push: {
-  //       photos: req.file.path
-  //     }
-  //   })
-  // }, { new: true })
-
-  // console.log(updatedFile)
-
-  res.status(200).json(updatedFile)
-  // } catch (error) {
-  //   return res.status(400).send('could not process request')  
-  // }
 }
