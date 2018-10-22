@@ -37,8 +37,6 @@ exports.add_images = async (req, res) => {
 
   let filepath = req.files.map(file => file.path)
 
-  console.log(filepath)
-
   let updatedFile
 
   // Add more pictures to the photos array
@@ -58,3 +56,7 @@ exports.add_images = async (req, res) => {
   }
 }
 
+// exports.remove_photos = (req, res) => {
+//   const id = req.params.id 
+//   File.findOneAndDelete(id, {})
+// }
