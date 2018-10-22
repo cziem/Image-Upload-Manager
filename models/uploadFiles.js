@@ -6,7 +6,8 @@ const fileSchema = new Schema({
   caption: { type: String, required: true },
   address: String,
   price: { type: String, required: true },
-  img: { type: String, required: true }
+  img: { type: String, required: true },
+  photos: Array
   // img: {
   //   data: Buffer, contentType: String
   // }

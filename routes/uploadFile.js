@@ -29,5 +29,7 @@ const fileController = require("../controllers/uploadFiles")
 const checkAuth = require("../middlewares/auth")
 
 router.post('/create', checkAuth, upload.single('buildingImage'), fileController.create)
+router.put('/add_images/:id', checkAuth, upload.array('photos', 8), fileController.add_images)
+router.get('/get_files', checkAuth, fileController.get_all)
 
 module.exports = router

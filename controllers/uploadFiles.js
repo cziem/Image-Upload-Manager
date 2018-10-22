@@ -23,3 +23,48 @@ exports.create = async (req, res) => {
     })
   }
 }
+
+exports.get_all = async (req, res) => {
+  const files = await File.find().select('-__v')
+
+  if (!files) return res.status(400).send('an error occurred')
+
+  res.json(files)
+}
+
+exports.add_images = async (req, res) => {
+  const id = req.params.id
+
+  let filepath = req.files.map(file => file.path)
+
+  console.log(filepath)
+
+  let updatedFile
+
+  // Add more pictures to the photos array
+  for (let i = 0; i <= filepath.length; i++) {
+    updatedFile = await File.findOneAndUpdate(id, {
+      $push: {
+        photos: filepath[i]
+      }
+    })
+  }
+
+
+
+  // let updatedFile = await req.files.forEach((file) => {
+  //   console.log(file)
+  //   File.findOneAndUpdate(id, {
+  //     $push: {
+  //       photos: req.file.path
+  //     }
+  //   })
+  // }, { new: true })
+
+  // console.log(updatedFile)
+
+  res.status(200).json(updatedFile)
+  // } catch (error) {
+  //   return res.status(400).send('could not process request')  
+  // }
+}
